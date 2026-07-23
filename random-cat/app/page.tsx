@@ -1,6 +1,7 @@
 import { connection } from "next/server"; 
 import { CatImage } from "./cat-image";
 import { fetchImage } from "./fetch-image"; 
+import { LikeButton } from "./like-button";
  
 export default async function Home() {
   //           ^^^^^(1) asyncキーワードを追加
@@ -9,5 +10,12 @@ export default async function Home() {
   // (3) APIから画像を取得
   const image = await fetchImage();
   // (4) 画像URLをコンソールに表示
-  return <CatImage url={image.url} />;
+  console.log(image.url);
+  
+  return (
+    <div>
+      <CatImage url={image.url} />
+      <LikeButton />
+    </div>
+  );
 }
